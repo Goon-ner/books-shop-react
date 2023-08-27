@@ -1,0 +1,21 @@
+.shopPage {
+  color: rgb(226, 167, 3);
+  display: flex;
+  max-width: 80%;
+  margin-left: 10%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.singleBook {
+  max-width: 27%;
+  padding: 10px;
+  margin: 10px 15px;
+}
+
+.bookImg {
+  max-width: 70%;
+}
+.shopTitle {
+  color: rgb(226, 167, 3);
+  margin: 20px 0;
+}
