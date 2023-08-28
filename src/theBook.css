@@ -6,6 +6,10 @@
 }
 .linkReturn {
   display: flex;
+  max-width: 130px;
+}
+.linkReturn:hover {
+  background-color: rgb(245, 217, 175);
 }
 
 .bookDescription {
