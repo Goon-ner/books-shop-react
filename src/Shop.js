@@ -1,6 +1,6 @@
 import { NavLink, useLocation } from 'react-router-dom'
 import queryString from 'query-string'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import books from './data/books'
 import './shop.css'
 
@@ -16,15 +16,9 @@ function sortBooks(books, key) {
 const Shop = () => {
   const location = useLocation()
   const query = queryString.parse(location.search)
-  const [sortKey, setSortKey] = useState(query.sort)
-  const [sortedBooks, setSortedBooks] = useState(sortBooks(books, sortKey))
+  const [sortedBooks, setSortedBooks] = useState(sortBooks(books, query.sort))
 
-  function newSort() {
-    setSortKey(query.sort)
-    setSortedBooks(sortBooks(books, sortKey))
-    console.log(sortKey)
-  }
-  // useEffect(() => newSort(), [])
+  useEffect(() => setSortedBooks(sortBooks(books, query.sort)), [query.sort])
 
   return (
     <>
@@ -32,11 +26,7 @@ const Shop = () => {
       <div className="sort">
         <button className="sortButton">Сортировать:</button>
         <div className="sortList">
-          <NavLink
-            className="sortLink"
-            to=".?sort=author"
-            onClick={() => newSort()}
-          >
+          <NavLink className="sortLink" to=".?sort=author">
             По автору
           </NavLink>
           <NavLink className="sortLink" to=".?sort=title">
